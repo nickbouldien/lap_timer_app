@@ -1,4 +1,6 @@
 import {EventEmitter} from 'events'
+//https://github.com/notch8/learn-javascript-examples/blob/master/08-React/flux-1/src/stores/MenuItems.js
+
 
 // Import the Dispatcher so we can use it
 import Dispatcher from '../dispactchers/Dispatcher'
