@@ -1,9 +1,9 @@
 import {EventEmitter} from 'events'
 //https://github.com/notch8/learn-javascript-examples/blob/master/08-React/flux-1/src/stores/MenuItems.js
 
-
 // Import the Dispatcher so we can use it
-import Dispatcher from '../dispactchers/Dispatcher'
+import Dispatcher from '../dispatchers/Dispatcher'
+
 
 class TimesStored extends EventEmitter{
   constructor(){
@@ -20,17 +20,22 @@ class TimesStored extends EventEmitter{
     ]
   }
 
-  // method to add a new MainCourse, called from `handleActions()`
+  getAllTimes(){
+    return this.times;
+  }
+
+  //method to add a new MainCourse, called from `handleActions()`
   addTime(name){
     this.times.push({
       id: new Date().valueOf(),
-      name: new Date() // or name???
+      name: name //new Date() // or name???
     })
     this.emit('change')
   }
 
   // The method we register with the Dispatcher.  It will be called on every eent
   handleActions(action){
+    console.log('action', action);
     //Only react to the action types we're interested in
     switch(action.type){
       case("CREATE_TIME_ACTION"):{

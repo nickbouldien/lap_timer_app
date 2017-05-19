@@ -1,8 +1,8 @@
 import Dispatcher from '../dispatchers/Dispatcher'
 
-export function createTimeAction(name){
+export function createTimeAction(){
   Dispatcher.dispatch({
     type: 'CREATE_TIME_ACTION',
-    name: name
+    name: new Date().toLocaleTimeString()
   })
 }
