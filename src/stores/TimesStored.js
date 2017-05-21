@@ -32,6 +32,18 @@ class TimesStored extends EventEmitter{
     })
     this.emit('change')
   }
+  deleteTime(id){
+    // reactkungfu.com todolist
+    console.log(id);
+    let taskIndex = this.times['id'].findIndex((task) => {
+      console.log('task: ' , task);
+      task.get('id') === id
+    })
+
+    taskIndex !== (-1) ? this.times.delete(id) : this.times
+    // should return here?  how does it emit change??
+    this.emit('change')
+  }
 
   // The method we register with the Dispatcher.  It will be called on every eent
   handleActions(action){
@@ -42,6 +54,9 @@ class TimesStored extends EventEmitter{
         // Call an internal method to handle action
         this.addTime(action.name)
         break
+      }
+      case("DELETE_TIME_ACTION"):{
+        this.deleteTime(action.id)
       }
       default:{}
     }

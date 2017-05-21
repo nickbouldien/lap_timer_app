@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {createTimeAction} from '../actions/CreateTimeAction';
-import {DeleteTimeAction} from '../actions/DeleteTimeAction';
+import {deleteTimeAction} from '../actions/DeleteTimeAction';
 import timesStored from '../stores/TimesStored';
 import {Link} from 'react-router-dom'
 
@@ -32,11 +32,9 @@ class Timer extends Component {
   }
   handleDeleteTime() {
     console.log(this.props);
-    // this.setState()
-    //let name = new Date();
-    let timeStamp = this.props.timeStamp;
-    console.log(timeStamp);
-    deleteTimeAction()
+    console.log(this.props.key);
+    let id = this.props.id;
+    deleteTimeAction(id) //this.props.key
   }
 
 
@@ -45,7 +43,7 @@ class Timer extends Component {
     let list = this.state.times.map(time => {
       return (
         <li key={time.id}>
-          id: {time.id}:     time: {time.name} <button onClick={this.handleDeleteTime.bind(this)>Delete</button>
+          id: {time.id}:     time: {time.name} <button id={time.id} onClick={this.handleDeleteTime.bind(this)}>Delete</button>
         </li>
       )
     })
